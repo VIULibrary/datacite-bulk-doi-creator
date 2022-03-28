@@ -76,10 +76,9 @@ file_name = input('Please enter the name of your CSV file. (Make sure the filena
 try:
     fp = open(file_name, 'rb').read()
     result = chardet.detect(fp)
-    print(result['encoding'])
-    # fp.close()
+    print('Suspected file encoding: {}'.format(result['encoding']))
 except:
-    print('Error reading file')
+    print('Error reading file.')
     exit()
 
 # new_dois = data_munger(file_name)
