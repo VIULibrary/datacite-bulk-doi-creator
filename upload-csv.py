@@ -13,7 +13,6 @@ def process_csv(file):
     input = pd.read_csv(file, encoding=config.encoding)
     processed_csv = []
     # TODO: determine if set or random prefix is used here.
-    # TODO: do we auto prepend 10. to prefix?
     prefix = config.doiPrefix
 
     try:
