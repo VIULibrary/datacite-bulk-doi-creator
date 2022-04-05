@@ -4,6 +4,7 @@ import requests
 import json
 import chardet
 import pandas as pd
+from datetime import datetime
 import config
 # from pprint import pprint
 
@@ -94,7 +95,7 @@ def save_results(results):
     try:
         output = pd.DataFrame(results)
         output = output.set_index('id')
-        output.to_csv('upload_report.csv')
+        output.to_csv('upload-report-{0}.csv'.format(datetime.now().strftime('%Y%m%d-%H%M%S')))
     except:
         print('Error saving report CSV.')
         exit()
