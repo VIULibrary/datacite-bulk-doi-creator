@@ -5,13 +5,10 @@ import json
 from datetime import datetime
 import csv
 import config
-# from pprint import pprint
 
 
 '''Reads in the metadata from your export CSV and readies it for import.'''
 def process_csv(file):
-    # input = pd.read_csv(file, encoding=config.encoding)
-    reader = csv.DictReader(file, config.csv_fields)
     reader = csv.DictReader(file)
     processed_csv = []
     # TODO: determine if set or random prefix is used here.
@@ -46,7 +43,7 @@ def process_csv(file):
     return processed_csv
 
 
-'''Process and submit DOIs to Datacite.'''
+'''Process and submit DOIs to DataCite.'''
 def submit_dois(dois):
     export = []
 
@@ -105,8 +102,6 @@ def save_results(results):
 
         writer.writeheader()
         writer.writerows(results)
-
-        # output.to_csv('upload-report-{0}.csv'.format(datetime.now().strftime('%Y%m%d-%H%M%S')))
     except:
         print('Error saving report CSV.')
         exit()
@@ -115,22 +110,7 @@ def save_results(results):
 
 
 
-# file_name = input('Please enter the name of your CSV file. (Make sure the filename has no spaces!)\n')
-# file_name = 'b.csv'
-# try:
-#     fp = open(file_name, 'rb').read()
-#     result = chardet.detect(fp)
-#     print('Suspected file encoding: {}'.format(result['encoding']))
-# except:
-#     print('Error reading file.')
-#     exit()
-
-# dois = process_csv(file_name)
-# results = submit_dois(dois)
-# save_results(results)
-
-file_name = input('Please enter the name of your CSV file. (Make sure the filename has no spaces!)\n')
-# file_name = 'b2.csv'
+file_name = input('Please enter the name of your CSV file.\n')
 try:
     file = open(file_name, newline='', errors='ignore')
 except:
@@ -138,8 +118,6 @@ except:
     exit()
 
 dois = process_csv(file)
-# print(dois)
 file.close()
 results = submit_dois(dois)
-# print(results)
 save_results(results)
