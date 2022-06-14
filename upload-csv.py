@@ -18,12 +18,19 @@ def process_csv(file):
         for row in reader:
             processed_csv.append({
                 'id': row['context_key'],
-                'creators': [{
-                    'name': row['creator'],
-                    'nameType': 'Personal',
-                    'givenName': row['author1_fname'],
-                    'familyName': row['author1_lname']
-                }],
+                'creators': [
+                    {
+                        'name': row['creator1'],
+                        'nameType': row['creator1_type'],
+                        'givenName': row['creator1_given'],
+                        'familyName': row['creator1_family']
+                    },{
+                        'name': row['creator2'],
+                        'nameType': row['creator2_type'],
+                        'givenName': row['creator2_given'],
+                        'familyName': row['creator2_family']
+                    }
+                ],
                 'year': row['date'],
                 'uri': row['source'],
                 'title': row['title'],
