@@ -4,16 +4,24 @@ Forked From: https://github.com/UNLV-Libraries/metadata-workflows
 Author: Matt Brooks <mbrooks34@gsu.edu>  
 Date Created: 2022-03-28  
 License: [MIT](https://mit-license.org/)  
-Version: 0.1.0  
+Version: 0.2.0  
 
 ## Description
 A python script that creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state.
 
 ## Installation
-
+1. Install python
+2. Install Requests library
+3. Install json, datetime, csv modules
 
 ## Usage
-Rename the config.sample.py file to config.py and fill in your entire DOI prefix, username, and password. If wanting to test the script out with the test DataCite API replace the URL with the API test URL (https://api.test.datacite.org/dois).
+Rename the config.sample.py file to config.py and fill in your entire DOI prefix, username, and password. If wanting to test the script out with the test DataCite API replace the URL with the API test URL (https://api.test.datacite.org/dois) and credentials.
+
+### Error Codes
+https://support.datacite.org/docs/api-error-codes
+
+### Multiple Authors
+
 
 **WORK IN PROGRESS**
 
