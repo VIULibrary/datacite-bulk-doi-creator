@@ -1,5 +1,6 @@
 __pycache__
 config.py
 test.py
+*.ipynb
 *.csv
 !headers.csv
