@@ -11,7 +11,6 @@ import config
 def process_csv(file):
     reader = csv.DictReader(file)
     processed_csv = []
-    # TODO: determine if set or random prefix is used here.
     prefix = config.doiPrefix
 
     try:
