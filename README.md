@@ -28,7 +28,7 @@ Run the python script upload-csv.py. When starting, it will ask you to provide a
 **year** - publication year  
 **type** - resource type  
 **description** - abstract description  
-**creator{n}** - full name (example, creator1, creator2, etc.)  
+**creator{n}** - full name (header example: creator1, creator2, etc.)  
 **creator{n}_type** - *Personal* or *Organizational*  
 **creator{n}_given** - given name  
 **creator{n}_family** - family name  
