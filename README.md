@@ -4,7 +4,7 @@ Forked From: https://github.com/UNLV-Libraries/metadata-workflows
 Author: Matt Brooks <mbrooks34@gsu.edu>  
 Date Created: 2022-03-28  
 License: [MIT](https://mit-license.org/)  
-Version: 0.2.0  
+Version: 1.0.0  
 
 ## Description
 A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state.
@@ -36,8 +36,8 @@ Run the python script upload-csv.py. When starting, it will ask you to provide a
 **source** - URL reference to resource  
 **context_key** - DOI suffix
 
-### Error Codes
-If an error occurs please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes) for more information.
+### Errors
+If an error occurs a verbose message will be logged in the upload report. For more information on error codes please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes).
 
 ## Attribution
 The original code was created by Scotty Carlson and adapted by Kelsey George for UNLV Library.
