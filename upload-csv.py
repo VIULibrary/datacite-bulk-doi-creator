@@ -11,21 +11,34 @@ import config
 def process_csv(file):
     reader = csv.DictReader(file)
     processed_csv = []
-    # TODO: determine if set or random prefix is used here.
     prefix = config.doiPrefix
 
     try:
         for row in reader:
+            i = 1
+            creator = 'creator' + str(i)
+            creators = []
+
+            while creator in row:
+               # Only append if there is data present.
+               if row[creator]:
+                  creators.append({
+                     'name': row['creator' + str(i)],
+                     'nameType': row['creator' + str(i) + '_type'],
+                     'givenName': row['creator' + str(i) + '_given'],
+                     'familyName': row['creator' + str(i) + '_family']
+                  })
+               else:
+                  break
+
+               i += 1
+               creator = 'creator' + str(i)
+
             processed_csv.append({
                 'id': row['context_key'],
-                'creators': [{
-                    'name': row['creator'],
-                    'nameType': 'Personal',
-                    'givenName': row['author1_fname'],
-                    'familyName': row['author1_lname']
-                }],
-                'year': row['date'],
-                'uri': row['source'],
+                'creators': creators,
+                'year': row['year'],
+                'url': row['source'],
                 'title': row['title'],
                 'type': row['type'],
                 'descriptions': [{
@@ -68,7 +81,7 @@ def submit_dois(dois):
                         'resourceType': doi['type']
                     },
                     'schemaVersion': 'http://datacite.org/schema/kernel-4',
-                    'url': doi['uri']
+                    'url': doi['url']
                 }
             }
         }
@@ -80,10 +93,16 @@ def submit_dois(dois):
             data=json_data.encode('utf-8'),
             auth=(config.username, config.password)
         )
+
+        response_text = json.loads(response.text)
         print('{0} processed, response: {1}'.format(doi['doi'], response.status_code))
         export_row['id'] = doi['id']
         export_row['doi'] = 'https://doi.org/{0}'.format(doi['doi'])
         export_row['status'] = response.status_code
+
+        if 'errors' in response_text and 'title' in response_text['errors'][0]:
+            export_row['error_message'] = response_text['errors'][0]['title']
+
         export.append(export_row)
 
     return export
@@ -96,7 +115,8 @@ def save_results(results):
         fields = [
             'id',
             'doi',
-            'status'
+            'status',
+            'error_message'
         ]
         writer = csv.DictWriter(file, fieldnames=fields)
 
