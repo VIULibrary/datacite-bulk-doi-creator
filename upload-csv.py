@@ -94,13 +94,15 @@ def submit_dois(dois):
             auth=(config.username, config.password)
         )
 
-        # TODO: something with the error code for better readability, either display or export or both
-        # temp = json.loads(response.text)
-        # print(temp['errors'][0]['title'])
+        response_text = json.loads(response.text)
         print('{0} processed, response: {1}'.format(doi['doi'], response.status_code))
         export_row['id'] = doi['id']
         export_row['doi'] = 'https://doi.org/{0}'.format(doi['doi'])
         export_row['status'] = response.status_code
+
+        if 'errors' in response_text and 'title' in response_text['errors'][0]:
+            export_row['error_message'] = response_text['errors'][0]['title']
+
         export.append(export_row)
 
     return export
@@ -113,7 +115,8 @@ def save_results(results):
         fields = [
             'id',
             'doi',
-            'status'
+            'status',
+            'error_message'
         ]
         writer = csv.DictWriter(file, fieldnames=fields)
 
