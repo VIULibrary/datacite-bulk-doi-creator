@@ -9,7 +9,8 @@ import config
 
 '''Reads in the metadata from your export CSV and readies it for import.'''
 def process_csv(file):
-    reader = csv.DictReader(file)
+    header = [h.strip().lower() for h in file.readline().split(',')]
+    reader = csv.DictReader(file, fieldnames=header)
     processed_csv = []
     prefix = config.doiPrefix
 

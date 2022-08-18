@@ -4,10 +4,10 @@ Forked From: https://github.com/UNLV-Libraries/metadata-workflows
 Author: Matt Brooks <mbrooks34@gsu.edu>  
 Date Created: 2022-03-28  
 License: [MIT](https://mit-license.org/)  
-Version: 1.0.0  
+Version: 1.1.0
 
 ## Description
-A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state.
+A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state. If you are looking for the PHP version of this script see [DataCite Bulk DOI Creator WebApp](https://github.com/gsu-library/datacite-bulk-doi-creator-webapp).
 
 For more information about DOIs please see DataCite's [support page](https://support.datacite.org/) and/or resources from their [homepage](https://doi.datacite.org/). Information on their [metadata schemas](https://schema.datacite.org/) is also available.
 
@@ -17,7 +17,7 @@ For more information about DOIs please see DataCite's [support page](https://sup
 3. [Install json, datetime, and csv modules](https://docs.python.org/3/installing/index.html)
 
 ## Usage
-Rename the config.sample.py file to config.py and fill in your DOI prefix, username, and password. If wanting to test the script out with the test DataCite API replace the URL with the API test URL (https://api.test.datacite.org/dois) and credentials.
+Rename the config.sample.py file to config.py and fill in your DOI prefix, username (repository ID), and password. If wanting to test the script out with the test DataCite API replace the URL with the API test URL (https://api.test.datacite.org/dois) and credentials.
 
 The headers.csv file provides an example of all valid headers this script accepts (also see CSV Fields below). Only one set of creator fields are required per record.
 
