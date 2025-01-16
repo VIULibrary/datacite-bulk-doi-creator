@@ -58,11 +58,12 @@ def process_csv(file):
 
 
 '''Process and submit DOIs to DataCite.'''
+
+
 def submit_dois(dois):
     export = []
 
     for doi in dois:
-        export_row = {}
         data = {
             'data': {
                 'id': doi['doi'],
@@ -70,22 +71,23 @@ def submit_dois(dois):
                 'attributes': {
                     'event': 'publish',
                     'doi': doi['doi'],
-                    'creators': doi['creators'],
-                    'titles': [{
-                        'title': doi['title']
-                    }],
-                    'publisher': doi['publisher'],
-                    'publicationYear': doi['year'],
-                    'descriptions': doi['descriptions'],
+                    'creators': doi['creators'] if doi['creators'] else [{'name': 'Anonymous'}],
+                    'titles': [{'title': doi['title'].strip()}],
+                    'publisher': doi['publisher'].strip(),
+                    'publicationYear': doi['year'].strip(),
+                    'descriptions': doi['descriptions'] if doi['descriptions'][0]['description'].strip() else [],
                     'types': {
                         'resourceTypeGeneral': 'Text',
-                        'resourceType': doi['type']
+                        'resourceType': doi['type'].strip()
                     },
                     'schemaVersion': 'http://datacite.org/schema/kernel-4',
-                    'url': doi['url']
+                    'url': doi['url'].strip()
                 }
             }
         }
+
+        print("Submitting data to DataCite:")
+        print(json.dumps(data, indent=4))
 
         json_data = json.dumps(data, ensure_ascii=False)
         response = requests.post(
@@ -96,17 +98,19 @@ def submit_dois(dois):
         )
 
         response_text = json.loads(response.text)
-        print('{0} processed, response: {1}'.format(doi['doi'], response.status_code))
-        export_row['id'] = doi['id']
-        export_row['doi'] = 'https://doi.org/{0}'.format(doi['doi'])
-        export_row['status'] = response.status_code
+        print(f"{doi['doi']} processed, response: {response.status_code}")
+        print(response_text)  # Print full response for debugging
 
-        if 'errors' in response_text and 'title' in response_text['errors'][0]:
-            export_row['error_message'] = response_text['errors'][0]['title']
-
+        export_row = {
+            'id': doi['id'],
+            'doi': f"https://doi.org/{doi['doi']}",
+            'status': response.status_code,
+            'error_message': response_text['errors'][0]['title'] if 'errors' in response_text else ''
+        }
         export.append(export_row)
 
     return export
+
 
 
 '''Saves a CSV file of the results.'''
