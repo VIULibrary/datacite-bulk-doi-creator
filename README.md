@@ -6,6 +6,7 @@ Date Created: 2022-03-28
 License: [MIT](https://mit-license.org/)  
 Version: 1.1.0
 
+
 ## Description
 A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state. If you are looking for the PHP version of this script see [DataCite Bulk DOI Creator WebApp](https://github.com/gsu-library/datacite-bulk-doi-creator-webapp).
 
@@ -47,3 +48,9 @@ The original code was created by Scotty Carlson and adapted by Kelsey George for
 - [json module](https://docs.python.org/3/library/json.html)
 - [datetime module](https://docs.python.org/3/library/datetime.html)
 - [csv module](https://docs.python.org/3/library/csv.html)
+
+
+## Updates
+- use auto-prefix.py and a corresponding.csv (without a **context_key** header) to have Datacite generate DOI suffix for you
+- console gives a count of DOIs generated
+- as does the upload report
