@@ -3,6 +3,6 @@ config.py
 test.py
 *.ipynb
 *.csv
-     .DS_Store
-        .vscode/
+.DS_Store
+.vscode/
 !headers.csv
