@@ -144,32 +144,40 @@ def submit_dois(dois):
 
 
 '''Saves a CSV file of the results.'''
-def save_results(results):
+def save_results(results, dois):
     try:
-        # Open the report CSV file for writing
-        file = open(f'upload-report-{datetime.now().strftime("%Y%m%d-%H%M%S")}.csv', 'w', newline='')
-        fields = ['doi', 'status', 'error_message']  # Define CSV headers
-        writer = csv.DictWriter(file, fieldnames=fields)
+        # Prompt the user for the output CSV filename
+        output_file_name = input("Please enter the name for the output CSV file (e.g., results.csv):\n")
 
-        writer.writeheader()  # Write headers
-        writer.writerows(results)  # Write all result rows
+        # Open the specified file for writing
+        with open(output_file_name, 'w', newline='') as file:
+            fields = ['title', 'source', 'doi', 'status', 'error_message']  # Define CSV headers
+            writer = csv.DictWriter(file, fieldnames=fields)
+
+            writer.writeheader()  # Write headers
+
+            # Combine DOI metadata with results for export
+            for doi, result in zip(dois, results):
+                writer.writerow({
+                    'title': doi['title'],            # Include title from input
+                    'source': doi['url'],             # Include source from input
+                    'doi': result['doi'],             # Full DOI (or None if failed)
+                    'status': result['status'],       # HTTP status code
+                    'error_message': result['error_message']  # Error message, if any
+                })
 
         # Count the successful entries (status code 201)
         success_count = sum(1 for result in results if result['status'] == 201)
 
-        # Append the summary row
-        file.write(f"\nTotal DOIs successfully generated: {success_count}/{len(results)}\n")
-        print(f"Results saved. Total DOIs successfully generated: {success_count}/{len(results)}")
+        # Log the total number of successful DOIs to the console
+        print(f"\nResults saved to {output_file_name}. Total DOIs successfully generated: {success_count}/{len(results)}")
     except Exception as e:
         print('Error saving report CSV:', e)
         exit()
-    finally:
-        file.close()
 
 
 
-
-file_name = input('Please enter the name of your CSV file.\n')
+file_name = input('Please enter the name of your input CSV file.\n')
 try:
     file = open(file_name, newline='', errors='ignore')
 except:
@@ -179,4 +187,6 @@ except:
 dois = process_csv(file)
 file.close()
 results = submit_dois(dois)
-save_results(results)
+save_results(results, dois)  # Pass `dois` and `results` to save_results
+
+
