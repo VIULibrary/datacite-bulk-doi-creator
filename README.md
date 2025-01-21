@@ -41,11 +41,13 @@ Run the python script upload-csv.py. When starting, it will ask you to provide a
 ## UPDATES (VIU)
 - use auto-prefix.py and a corresponding.csv (without a **context_key** header) to have Datacite generate DOI suffix for you
 - console gives a count of DOIs generated
-- log output goes to named .csv with **title**, **source**, **doi** headers/data
+- log output goes to named .csv with **title**, **source**, and **doi** headers/data
 
 
 ### Errors
 If an error occurs a verbose message will be logged in the upload report. For more information on error codes please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes).
+
+If using auto-prefix.py, the error is written to the output .csv
 
 ## Attribution
 The original code was created by Scotty Carlson and adapted by Kelsey George for UNLV Library.
