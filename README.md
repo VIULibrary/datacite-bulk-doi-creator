@@ -31,9 +31,10 @@ Run the python script upload-csv.py/auto-prefix.py When starting, it will ask yo
 
 
 ## UPDATES (VIU)
-- use auto-prefix.py and a corresponding.csv (without a **context_key** header) to have Datacite generate DOI suffix for you
+- use auto-prefix.py and a corresponding.csv (without a **context_key** header) to have Datacite generate DOI suffixes for you
 - console gives a count of DOIs generated
 - log output goes to named .csv with **title**, **source**, and **doi** headers/data
+- Use this output file to merge the DOIs into your dspace metadata export/import file with [csv-merger](https://github.com/VIULibrary/csv-merger)
 
 
 ### Errors
