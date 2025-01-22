@@ -1,4 +1,4 @@
-
+# DataCite Bulk DOI Creator
 ## Description
 A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state. If you are looking for the PHP version of this script see [DataCite Bulk DOI Creator WebApp](https://github.com/gsu-library/datacite-bulk-doi-creator-webapp).
 
@@ -51,7 +51,7 @@ The original code was created by Scotty Carlson and adapted by Kelsey George for
 - [csv module](https://docs.python.org/3/library/csv.html)
 
 
-# DataCite Bulk DOI Creator
+## DataCite Bulk DOI Creator - attribution
 Code Repository: https://github.com/gsu-library/datacite-bulk-doi-creator  
 Forked From: https://github.com/UNLV-Libraries/metadata-workflows  
 Author: Matt Brooks <mbrooks34@gsu.edu>  
