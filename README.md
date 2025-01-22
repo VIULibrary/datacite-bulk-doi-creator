@@ -1,11 +1,3 @@
-# DataCite Bulk DOI Creator
-Code Repository: https://github.com/gsu-library/datacite-bulk-doi-creator  
-Forked From: https://github.com/UNLV-Libraries/metadata-workflows  
-Author: Matt Brooks <mbrooks34@gsu.edu>  
-Date Created: 2022-03-28  
-License: [MIT](https://mit-license.org/)  
-Version: 1.1.0
-
 
 ## Description
 A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state. If you are looking for the PHP version of this script see [DataCite Bulk DOI Creator WebApp](https://github.com/gsu-library/datacite-bulk-doi-creator-webapp).
@@ -22,12 +14,12 @@ Rename the config.sample.py file to config.py and fill in your DOI prefix, usern
 
 The headers.csv file provides an example of all valid headers this script accepts (also see CSV Fields below). Only one set of creator fields are required per record.
 
-Run the python script upload-csv.py. When starting, it will ask you to provide a file name to process. The file path will be relative to the folder the python script is run from (unless a leading slash is used). When finished an upload report will be generated.
+Run the python script upload-csv.py/auto-prefix.py When starting, it will ask you to provide a file name to process. The file path will be relative to the folder the python script is run from (unless a leading slash is used). When finished an upload report/.csv output will be generated.
 
 ### CSV Fields
 **title** - title of publication  
 **year** - publication year  
-**type** - resource type  
+**type** - [Datacite resource type](https://support.datacite.org/docs/what-are-the-resource-types-for-datacite-dois)  
 **description** - abstract description  
 **creator{n}** - full name (header example: creator1, creator2, etc.)  
 **creator{n}_type** - *Personal* or *Organizational*  
@@ -35,7 +27,7 @@ Run the python script upload-csv.py. When starting, it will ask you to provide a
 **creator{n}_family** - family name  
 **publisher** - publisher  
 **source** - URL reference to resource  
-**context_key** - DOI suffix
+**context_key** - DOI suffix (remove from .csv and run 'auto-prefx.py to have Datacite autogenerate DOIs)
 
 
 ## UPDATES (VIU)
@@ -45,9 +37,9 @@ Run the python script upload-csv.py. When starting, it will ask you to provide a
 
 
 ### Errors
-If an error occurs a verbose message will be logged in the upload report. For more information on error codes please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes).
+If an error occurs a verbose message will be logged in the upload report/.csv. For more information on error codes please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes).
 
-If using auto-prefix.py, the error is written to the output .csv
+If using auto-prefix.py, the error is written to the output.csv
 
 ## Attribution
 The original code was created by Scotty Carlson and adapted by Kelsey George for UNLV Library.
@@ -59,3 +51,10 @@ The original code was created by Scotty Carlson and adapted by Kelsey George for
 - [csv module](https://docs.python.org/3/library/csv.html)
 
 
+# DataCite Bulk DOI Creator
+Code Repository: https://github.com/gsu-library/datacite-bulk-doi-creator  
+Forked From: https://github.com/UNLV-Libraries/metadata-workflows  
+Author: Matt Brooks <mbrooks34@gsu.edu>  
+Date Created: 2022-03-28  
+License: [MIT](https://mit-license.org/)  
+Version: 1.1.0
