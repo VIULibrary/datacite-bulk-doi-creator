@@ -16,7 +16,7 @@ The headers.csv file provides an example of all valid headers this script accept
 
 Run the python script upload-csv.py/auto-prefix.py When starting, it will ask you to provide a file name to process. The file path will be relative to the folder the python script is run from (unless a leading slash is used). When finished an upload report/.csv output will be generated.
 
-### CSV Fields
+## CSV Fields
 **title** - title of publication  
 **year** - publication year  
 **type** - [Datacite resource type](https://support.datacite.org/docs/what-are-the-resource-types-for-datacite-dois)  
@@ -37,7 +37,7 @@ Run the python script upload-csv.py/auto-prefix.py When starting, it will ask yo
 - Use this output file to merge the DOIs into your dspace metadata export/import file with [csv-merger](https://github.com/VIULibrary/csv-merger)
 
 
-### Errors
+## Errors
 If an error occurs a verbose message will be logged in the upload report/.csv. For more information on error codes please see DataCite's [API error code page](https://support.datacite.org/docs/api-error-codes).
 
 If using auto-prefix.py, the error is written to the output.csv
