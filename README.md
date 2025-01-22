@@ -51,7 +51,7 @@ The original code was created by Scotty Carlson and adapted by Kelsey George for
 - [csv module](https://docs.python.org/3/library/csv.html)
 
 
-## DataCite Bulk DOI Creator - attribution
+## Attribution
 Code Repository: https://github.com/gsu-library/datacite-bulk-doi-creator  
 Forked From: https://github.com/UNLV-Libraries/metadata-workflows  
 Author: Matt Brooks <mbrooks34@gsu.edu>  
