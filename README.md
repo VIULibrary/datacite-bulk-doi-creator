@@ -1,4 +1,12 @@
 # DataCite Bulk DOI Creator
+
+Use in conjunction with the the [csv-merger-1](https://github.com/VIULibrary/csv-merger-1) and [csv-merger-2](https://github.com/VIULibrary/csv-merger-2) to map a dspace export .csv to a datacite import .csv, generate DOIs, and finally merge your DOIs in your dspace export/import .csv for importing into dspace
+
+
+**[csv-merger-1](https://github.com/VIULibrary/csv-merger-) &rarr; DATACITE BULK DOI CREATOR &rarr; [csv-merger-csv-2](https://github.com/VIULibrary/csv-merger-2)**
+
+
+
 ## Description
 A python script that bulk creates DataCite DOIs from a provided CSV file. DOIs are created in the findable state. If you are looking for the PHP version of this script see [DataCite Bulk DOI Creator WebApp](https://github.com/gsu-library/datacite-bulk-doi-creator-webapp).
 
@@ -34,7 +42,7 @@ Run the python script upload-csv.py/auto-prefix.py When starting, it will ask yo
 - use auto-prefix.py and a corresponding.csv (without a **context_key** header) to have Datacite generate DOI suffixes for you
 - console gives a count of DOIs generated
 - log output goes to named .csv with **title**, **source**, and **doi** headers/data
-- Use this output file to merge the DOIs into your dspace metadata export/import file with [csv-merger](https://github.com/VIULibrary/csv-merger)
+- Use this output file to merge the DOIs into your dspace metadata export/import file with [csv-merger](https://github.com/VIULibrary/csv-merger-1)
 
 
 ## Errors
