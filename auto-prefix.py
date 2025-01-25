@@ -7,14 +7,6 @@ import csv
 import config
 
 
-
-
-#'''Auto-generate a suffix'''
-#def generate_suffix():
-#    return str(uuid.uuid4())
-
-
-
 '''Reads in the metadata from your export CSV and readies it for import.'''
 def process_csv(file):
     header = [h.strip().lower() for h in file.readline().split(',')]
