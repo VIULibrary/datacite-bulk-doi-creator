@@ -32,6 +32,7 @@ Run the python script upload-csv.py/auto-prefix.py When starting, it will ask yo
 **creator{n}** - full name (header example: creator1, creator2, etc.)  
 **creator{n}_type** - *Personal* or *Organizational*  
     (adjust this manually as needed, subsequent related creator fields are then blank)
+    
 **creator{n}_given** - given name  
 **creator{n}_family** - family name  
 **publisher** - publisher  
